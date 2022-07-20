@@ -8,6 +8,7 @@ class RegistrationController < ApplicationController
     if @user.save
       redirect_to root_path
     else
+      flash[:alert] = "Can't create this user"
       render :new, status: :unprocessable_entity
     end
   end
