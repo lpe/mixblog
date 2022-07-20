@@ -6,6 +6,7 @@ class RegistrationController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:notice] = "Successfully created"
       redirect_to root_path
     else
       flash[:alert] = "Can't create this user"
