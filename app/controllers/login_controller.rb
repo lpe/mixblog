@@ -7,6 +7,7 @@ class LoginController < ApplicationController
   def create
     @user = User.find_by(login_params)
     if @user
+      session[:current_user] = @user.id
       redirect_to root_path
     else
       flash[:alert] = "Invalid credentials"
