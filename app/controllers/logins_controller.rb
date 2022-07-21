@@ -1,4 +1,4 @@
-class LoginController < ApplicationController
+class LoginsController < ApplicationController
   
   def new
     @user = User.create
@@ -13,6 +13,11 @@ class LoginController < ApplicationController
       flash[:alert] = "Invalid credentials"
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    reset_session
+    render :new
   end
 
   private
