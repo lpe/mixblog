@@ -16,7 +16,7 @@ class LoginsController < ApplicationController
   end
 
   def destroy
-    reset_session
+    session[:current_user] = nil
     render :new
   end
 
