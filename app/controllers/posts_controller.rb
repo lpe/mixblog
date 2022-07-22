@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     else
       flash[:notice] = "Welcome #{user.name}"
     end
+    @posts = Post.all.order(created_at: "DESC")
   end
 
   def new

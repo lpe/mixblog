@@ -1,4 +1,17 @@
 <h1>Posts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+  </tr>
+   <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+    </tr>
+  <% end %>
+</table>
+
 <% if session[:current_user] %>
   <%= link_to "Logout", logins_path, data: { "turbo-method": :delete }  %>
 <% else %>
