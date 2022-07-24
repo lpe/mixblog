@@ -2,3 +2,8 @@
 <p>Title : <%= @post.title %></p>
 <p>Body : <%= @post.body %></p>
 <p>Author : <%= @post.user.name %></p>
+<p>Created at : <%= @post.created_at %></p>
+<% if @post.user.id == session[:current_user] %>
+  <%= link_to "Edit", edit_post_path(@post) %>
+<% end %>
+<%= link_to "Home", root_path %>

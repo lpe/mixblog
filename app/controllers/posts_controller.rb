@@ -30,6 +30,19 @@ class PostsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @post.update(post_params)
+      flash[:notice] = "Post successfully updated"
+      redirect_to root_path
+    else
+      flash[:alert] = "Can't update this post"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def post_params
