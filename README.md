@@ -15,5 +15,3 @@ Users should be able to:
 If someone is not logged in, he/she can only see posts, but not edit them.
 
 Finally, upload your code to Github, and paste the repository link here.
-
-#TODO : https://stackoverflow.com/questions/9084101/rails-delete-user-session-path
