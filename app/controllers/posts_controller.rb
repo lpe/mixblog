@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+
+  before_action :set_post, :except => [:index, :new]
   
   def index
     user = User.find_by(id: session[:current_user])
@@ -32,6 +34,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body).merge(user_id: session[:current_user])
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
 end
