@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, :except => [:index, :new]
-  
+  before_action :set_post,  only: %i[show edit update]
+
   def index
     user = User.find_by(id: session[:current_user])
     if user.blank?

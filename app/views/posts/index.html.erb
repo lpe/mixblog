@@ -18,6 +18,7 @@
 </table>
 
   <% if session[:current_user] %>
+    <%= link_to "Create your own post", new_post_path %>
     <%= link_to "Logout", logins_path, data: { "turbo-method": :delete }  %>
   <% else %>
     <div>Want to add posts or edit yours ? Please <%= link_to "Sign In", new_logins_path %></p>
