@@ -1,3 +1,8 @@
+25/07/2022 :
+
+- Fix security issue as a user can steal a record :-/
+- Add validations to Post model
+
 Build a simple blog.
 
 Add a Post model which has title and body as its fields, which allows users to create posts.

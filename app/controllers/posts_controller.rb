@@ -22,7 +22,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Post successfully created"
       redirect_to root_path
     else
-      flash[:alert] = "Can't create this post"
+      flash[:alert] = "Can't create this post : " + @post.errors.full_messages.to_s
       render :new, status: :unprocessable_entity
     end
   end
@@ -31,6 +31,10 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if @post.user_id != session[:current_user]
+      flash[:alert] = "You may not update this post"
+      redirect_to root_path
+    end
   end
 
   def update
@@ -38,7 +42,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Post successfully updated"
       redirect_to root_path
     else
-      flash[:alert] = "Can't update this post"
+      flash[:alert] = "Can't create this post : " + @post.errors.full_messages.to_s
       render :edit, status: :unprocessable_entity
     end
   end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "posts#index"
 
-  resource :logins, only: [:new, :create, :destroy]
+  resource :logins, only: [:new, :create ]
   resource :registrations, only: [:new, :create]
   resources :posts
   
