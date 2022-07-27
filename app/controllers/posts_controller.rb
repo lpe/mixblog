@@ -18,6 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = session[:current_user]
     if @post.save
       flash[:alert] = "Post successfully created"
       redirect_to root_path
@@ -39,10 +40,10 @@ class PostsController < ApplicationController
 
   def update
 
-    if post_params[:user_id]  != session[:current_user]
-      flash[:alert] = "You may not update this post"
+    if @post.user_id != session[:current_user]
+      flash[:alert] = "Operation not allowed"
       redirect_to root_path and return
-    end
+    end 
 
     if @post.update(post_params)
       flash[:alert] = "Post successfully updated"
@@ -56,7 +57,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body).merge(user_id: session[:current_user])
+    params.require(:post).permit(:title, :body)
   end
 
   def set_post
